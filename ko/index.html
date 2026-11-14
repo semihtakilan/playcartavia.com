@@ -122,11 +122,13 @@ body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:ce
 .stores .btn svg{width:24px;height:24px}
 .stores .btn span{display:grid;line-height:1.15}
 .stores .btn small{font-size:11px;font-weight:700;opacity:.78}
-.fan{position:relative;width:100%;aspect-ratio:1/.8}
-.fan img{position:absolute;top:12%;width:44%;height:auto;border-radius:24px;box-shadow:0 0 0 6px #120608,0 0 0 7px #3A2226,0 26px 44px -18px #000}
-.fan img:nth-child(1){left:2%;transform:rotate(-8deg)}
-.fan img:nth-child(2){left:27%;top:1%;width:47%;z-index:2}
-.fan img:nth-child(3){left:54%;transform:rotate(8deg)}
+.fan{position:relative;width:100%;aspect-ratio:1/1.02}
+.fan .ph{position:absolute;top:8%;width:38%;border-radius:9%/4.1%;padding:1.6%;background:#0D0607;box-shadow:inset 0 0 0 1px #3A2226,0 26px 44px -18px #000}
+.fan .ph img{display:block;width:100%;height:auto;border-radius:7.5%/3.4%}
+.fan .ph::after{content:"";position:absolute;top:3.1%;left:50%;width:5%;aspect-ratio:1;border-radius:50%;background:#0D0607;box-shadow:0 0 0 1px rgba(255,255,255,.05);transform:translateX(-50%)}
+.fan .ph:nth-child(1){left:5%;transform:rotate(-8deg)}
+.fan .ph:nth-child(2){left:30%;top:0;width:40%;z-index:2}
+.fan .ph:nth-child(3){left:57%;transform:rotate(8deg)}
 .band{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin:26px 0 0;padding:26px;border-radius:26px;background:rgba(55,15,21,.55);box-shadow:inset 0 0 0 1px var(--edge),inset 0 1px 0 rgba(255,255,255,.06)}
 .mini{display:grid;grid-template-columns:repeat(5,40px);gap:6px}
 .mini span{height:40px;border-radius:8px;background:var(--sunken);box-shadow:inset 0 0 0 1px var(--edge)}
@@ -202,9 +204,9 @@ body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:ce
       </div>
     </div>
     <div class="fan" aria-hidden="true">
-      <img src="/shots/ko-daily.webp" width="440" height="640" alt="">
-      <img src="/shots/ko-home.webp" width="440" height="640" alt="">
-      <img src="/shots/ko-duel.webp" width="440" height="640" alt="">
+      <span class="ph"><img src="/shots/ko-daily.webp" width="440" height="978" alt=""></span>
+      <span class="ph"><img src="/shots/ko-home.webp" width="440" height="978" alt=""></span>
+      <span class="ph"><img src="/shots/ko-moment.webp" width="440" height="978" alt=""></span>
     </div>
   </section>
   <section class="band">
