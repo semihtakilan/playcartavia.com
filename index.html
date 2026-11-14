@@ -12,10 +12,26 @@
 <meta property="og:description" content="Place cards on a 5×5 board where every row and column becomes a poker hand.">
 <meta property="og:url" content="https://playcartavia.com/">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://playcartavia.com/og/duel.png">
+<meta property="og:image" content="https://playcartavia.com/og/home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="tr" href="https://playcartavia.com/tr/">
+<link rel="alternate" hreflang="en" href="https://playcartavia.com/en/">
+<link rel="alternate" hreflang="de" href="https://playcartavia.com/de/">
+<link rel="alternate" hreflang="es" href="https://playcartavia.com/es/">
+<link rel="alternate" hreflang="fr" href="https://playcartavia.com/fr/">
+<link rel="alternate" hreflang="id" href="https://playcartavia.com/id/">
+<link rel="alternate" hreflang="it" href="https://playcartavia.com/it/">
+<link rel="alternate" hreflang="ja" href="https://playcartavia.com/ja/">
+<link rel="alternate" hreflang="ko" href="https://playcartavia.com/ko/">
+<link rel="alternate" hreflang="nl" href="https://playcartavia.com/nl/">
+<link rel="alternate" hreflang="pl" href="https://playcartavia.com/pl/">
+<link rel="alternate" hreflang="pt-BR" href="https://playcartavia.com/pt-BR/">
+<link rel="alternate" hreflang="ru" href="https://playcartavia.com/ru/">
+<link rel="alternate" hreflang="vi" href="https://playcartavia.com/vi/">
+<link rel="alternate" hreflang="zh-Hant" href="https://playcartavia.com/zh-Hant/">
+<link rel="alternate" hreflang="x-default" href="https://playcartavia.com/">
 <link rel="icon" href="/icon.png">
 <link rel="apple-touch-icon" href="/icon.png">
 <link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
@@ -84,6 +100,65 @@ body:not(.mobile) .brand{flex-basis:100%;justify-content:center}
 body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){.note{transition:none}}
+
+.home{--sunken:#481C22;--red:#A12B2B;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+.home .nav{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1120px;width:100%;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) 8px max(22px,env(safe-area-inset-left))}
+.home .brand{flex-basis:auto!important;justify-content:flex-start!important}
+.home .brand .wordmark{font-size:18px}
+.langs{position:relative}
+.langs summary{list-style:none;cursor:pointer;font-size:13px;font-weight:700;color:var(--muted);border:1px solid rgba(243,238,228,.2);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.langs summary::-webkit-details-marker{display:none}
+.langs[open] summary{color:var(--text);border-color:rgba(235,201,137,.55)}
+.langs ul{position:absolute;right:0;top:calc(100% + 8px);margin:0;padding:6px;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:2px;width:min(340px,calc(100vw - 32px));border-radius:16px;background:rgba(50,14,20,.97);box-shadow:inset 0 0 0 1px var(--edge),0 18px 36px -16px #000}
+.langs a{display:block;padding:8px 10px;border-radius:10px;color:var(--text);text-decoration:none;font-size:14px;font-weight:600}
+.langs a:hover,.langs a[aria-current]{background:rgba(235,201,137,.14);color:var(--accent-hi)}
+.home main{flex:1;width:100%;max-width:1120px;margin:0 auto;padding:0 max(22px,env(safe-area-inset-right)) 0 max(22px,env(safe-area-inset-left))}
+.hero{display:grid;grid-template-columns:1fr 1.05fr;align-items:center;gap:28px;padding:30px 0 10px}
+.hero .copy{display:grid;gap:18px;justify-items:start}
+.hero h1{font-size:clamp(30px,4.2vw,50px);line-height:1.1;letter-spacing:-.02em;font-weight:700;max-width:14ch}
+.hero p{font-size:clamp(16px,1.6vw,18px);color:var(--muted);max-width:38ch;text-wrap:pretty}
+.stores{display:flex;gap:12px;flex-wrap:wrap}
+.stores .btn{width:auto;min-height:56px;padding:9px 20px 9px 16px;border-radius:16px;justify-content:flex-start;text-align:left;gap:11px;font-size:16px}
+.stores .btn svg{width:24px;height:24px}
+.stores .btn span{display:grid;line-height:1.15}
+.stores .btn small{font-size:11px;font-weight:700;opacity:.78}
+.fan{position:relative;width:100%;aspect-ratio:1/.8}
+.fan img{position:absolute;top:12%;width:44%;height:auto;border-radius:24px;box-shadow:0 0 0 6px #120608,0 0 0 7px #3A2226,0 26px 44px -18px #000}
+.fan img:nth-child(1){left:2%;transform:rotate(-8deg)}
+.fan img:nth-child(2){left:27%;top:1%;width:47%;z-index:2}
+.fan img:nth-child(3){left:54%;transform:rotate(8deg)}
+.band{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center;margin:26px 0 0;padding:26px;border-radius:26px;background:rgba(55,15,21,.55);box-shadow:inset 0 0 0 1px var(--edge),inset 0 1px 0 rgba(255,255,255,.06)}
+.mini{display:grid;grid-template-columns:repeat(5,40px);gap:6px}
+.mini span{height:40px;border-radius:8px;background:var(--sunken);box-shadow:inset 0 0 0 1px var(--edge)}
+.mini b{height:40px;border-radius:8px;background:var(--paper);border:1px solid var(--card-edge);display:grid;place-items:center;align-content:center;gap:1px;color:var(--red);font:400 15px/1 var(--rank);box-shadow:0 0 0 2px var(--accent),0 0 16px rgba(235,201,137,.45)}
+.mini b svg{width:11px;height:11px}
+.band h2{margin:0 0 6px;font-family:var(--disp);font-weight:600;font-size:22px}
+.band p{color:var(--muted);max-width:60ch}
+.ladder{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0;padding:0;list-style:none}
+.ladder li{font-size:12.5px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(104,59,63,.75);color:var(--muted)}
+.ladder li.top{background:var(--accent);color:var(--on-accent)}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:22px 0 40px;padding:0;list-style:none}
+.modes li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;padding:18px;border-radius:20px;background:rgba(72,28,34,.5);box-shadow:inset 0 0 0 1px var(--edge)}
+.modes .ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:rgba(235,201,137,.14);color:var(--accent)}
+.modes .ico svg{width:24px;height:24px}
+.modes h3{margin:0 0 3px;font-family:var(--disp);font-weight:600;font-size:18px}
+.modes p{font-size:14px;color:var(--muted)}
+.modes p.slogan{color:var(--accent);font-weight:700;margin-bottom:2px}
+.site-foot{width:100%;max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:20px max(22px,env(safe-area-inset-right)) max(22px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left));border-top:1px solid rgba(243,238,228,.08);font-size:13px;color:var(--muted)}
+.site-foot a{color:var(--muted)}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;text-align:center;justify-items:center;padding-top:16px;gap:20px}
+  .hero .copy{justify-items:center}
+  .hero h1{max-width:16ch;font-size:clamp(26px,8.2vw,36px)}
+  .stores{justify-content:center}
+  .fan{max-width:440px}
+  .band{grid-template-columns:1fr;justify-items:center;text-align:center;padding:22px 18px}
+  .ladder{justify-content:center}
+  .modes{grid-template-columns:1fr}
+  .mini{grid-template-columns:repeat(5,34px);gap:5px}
+  .mini span,.mini b{height:34px}
+}
+@media (max-width:420px){.stores{display:grid;width:100%}.stores .btn{justify-content:center}}
 </style>
 </head>
 <body>
@@ -103,28 +178,62 @@ body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:ce
 <symbol id="i-spade" viewBox="-1 -1 2 2"><path fill="currentColor" d="M0,-1 C.3,-.58 .92,-.3 .92,.2 C.92,.72 .26,.8 .07,.42 L.26,1 L-.26,1 L-.07,.42 C-.26,.8 -.92,.72 -.92,.2 C-.92,-.3 -.3,-.58 0,-1Z"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-copy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 8.5h9.5A1.5 1.5 0 0 1 20 10v9.5a1.5 1.5 0 0 1-1.5 1.5H9a1.5 1.5 0 0 1-1.5-1.5V10A1.5 1.5 0 0 1 9 8.5ZM4 15.5V5a1.5 1.5 0 0 1 1.5-1.5H15"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3.6v16.8c0 .6.7 1 1.2.7l14.3-8.4c.5-.3.5-1.1 0-1.4L6.2 2.9C5.7 2.6 5 3 5 3.6Z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><g fill="currentColor"><rect x="3" y="3" width="5" height="5" rx="1.2"/><rect x="9.5" y="3" width="5" height="5" rx="1.2"/><rect x="16" y="3" width="5" height="5" rx="1.2"/><rect x="3" y="9.5" width="5" height="5" rx="1.2" opacity=".4"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.2" opacity=".4"/><rect x="16" y="9.5" width="5" height="5" rx="1.2" opacity=".4"/><rect x="3" y="16" width="5" height="5" rx="1.2" opacity=".4"/><rect x="9.5" y="16" width="5" height="5" rx="1.2" opacity=".4"/><rect x="16" y="16" width="5" height="5" rx="1.2" opacity=".4"/></g></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke-linecap="round"/></g><circle cx="12" cy="15" r="2" fill="currentColor"/></symbol>
+<symbol id="i-duel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="5" width="9" height="13" rx="2" transform="rotate(-10 7 11.5)"/><rect x="12.5" y="5" width="9" height="13" rx="2" transform="rotate(10 17 11.5)"/></g></symbol>
+<symbol id="i-heart" viewBox="-1 -1 2 2"><path fill="currentColor" d="M0,-.32 C0,-.8 -.92,-.8 -.92,-.16 C-.92,.36 -.3,.62 0,1 C.3,.62 .92,.36 .92,-.16 C.92,-.8 0,-.8 0,-.32Z"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="#12301F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5 10 17.5 19 7"/></symbol>
 </defs></svg>
-<main class="pg">
-  <div class="lead">
-    <svg class="big" aria-hidden="true"><use href="#emblem"/></svg>
-    <span class="wordmark" style="font-size:30px">CARTAVIA</span>
-    <h1 id="line" style="font-size:19px;max-width:22ch">Place cards on a 5×5 board where every row and column becomes a poker hand.</h1>
-  </div>
-  <div class="act">
-    <div class="pair"><a class="btn go" href="https://play.google.com/store/apps/details?id=com.semihtakilan.cartavia">Google Play</a><a class="btn go" href="https://apps.apple.com/app/id6828195639">App Store</a></div>
-    <p class="foot"><a id="privacy" href="/privacy/">Privacy Policy</a> · support@playcartavia.com</p>
-  </div>
+<div class="home">
+<header class="nav">
+  <a class="brand" href="/" aria-label="Cartavia"><svg aria-hidden="true"><use href="#emblem"/></svg><span class="wordmark">CARTAVIA</span></a>
+  <details class="langs"><summary aria-label="Language / Dil">English ▾</summary><ul><li><a href="/tr/" hreflang="tr" lang="tr">Türkçe</a></li><li><a href="/en/" hreflang="en" lang="en" aria-current="page">English</a></li><li><a href="/de/" hreflang="de" lang="de">Deutsch</a></li><li><a href="/es/" hreflang="es" lang="es">Español</a></li><li><a href="/fr/" hreflang="fr" lang="fr">Français</a></li><li><a href="/id/" hreflang="id" lang="id">Bahasa Indonesia</a></li><li><a href="/it/" hreflang="it" lang="it">Italiano</a></li><li><a href="/ja/" hreflang="ja" lang="ja">日本語</a></li><li><a href="/ko/" hreflang="ko" lang="ko">한국어</a></li><li><a href="/nl/" hreflang="nl" lang="nl">Nederlands</a></li><li><a href="/pl/" hreflang="pl" lang="pl">Polski</a></li><li><a href="/pt-BR/" hreflang="pt-BR" lang="pt-BR">Português (Brasil)</a></li><li><a href="/ru/" hreflang="ru" lang="ru">Русский</a></li><li><a href="/vi/" hreflang="vi" lang="vi">Tiếng Việt</a></li><li><a href="/zh-Hant/" hreflang="zh-Hant" lang="zh-Hant">繁體中文</a></li></ul></details>
+</header>
+<main>
+  <section class="hero">
+    <div class="copy">
+      <h1>Rows and columns become poker hands.</h1>
+      <p>Place cards on a 5×5 board and clear lines. A new deck every day, and Duello with your friends.</p>
+      <div class="stores" id="stores">
+        <a class="btn go" id="ios" href="https://apps.apple.com/app/id6828195639"><svg aria-hidden="true"><use href="#i-phone"/></svg><span><small>Download</small>App Store</span></a>
+        <a class="btn go" id="android" href="https://play.google.com/store/apps/details?id=com.semihtakilan.cartavia"><svg aria-hidden="true"><use href="#i-play"/></svg><span><small>Download</small>Google Play</span></a>
+      </div>
+    </div>
+    <div class="fan" aria-hidden="true">
+      <img src="/shots/en-daily.webp" width="440" height="640" alt="">
+      <img src="/shots/en-home.webp" width="440" height="640" alt="">
+      <img src="/shots/en-duel.webp" width="440" height="640" alt="">
+    </div>
+  </section>
+  <section class="band">
+    <div class="mini" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><b>10<svg aria-hidden="true"><use href="#i-heart"/></svg></b><b>J<svg aria-hidden="true"><use href="#i-heart"/></svg></b><b>Q<svg aria-hidden="true"><use href="#i-heart"/></svg></b><b>K<svg aria-hidden="true"><use href="#i-heart"/></svg></b><b>A<svg aria-hidden="true"><use href="#i-heart"/></svg></b><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <div><h2>Royal Flush</h2><p>Fill a row or a column. If its cards make a hand, the line clears; the rarer the hand, the bigger the score.</p><ul class="ladder"><li>Pair</li><li>Two Pair</li><li>Three of a Kind</li><li>Straight</li><li>Flush</li><li>Full House</li><li>Four of a Kind</li><li>Straight Flush</li><li>Five of a Kind</li><li class="top">Royal Flush</li></ul></div>
+  </section>
+  <ul class="modes">
+    <li><span class="ico"><svg aria-hidden="true"><use href="#i-grid"/></svg></span><div><h3>Classic</h3><p>Place pieces, clear lines, beat your best.</p></div></li>
+    <li><span class="ico"><svg aria-hidden="true"><use href="#i-cal"/></svg></span><div><h3>Daily Decks</h3><p>A new deck and new tasks every day. Finish the month, win the trophy.</p></div></li>
+    <li><span class="ico"><svg aria-hidden="true"><use href="#i-duel"/></svg></span><div><h3>Duello</h3><p class="slogan">Last card takes it</p><p>Against a friend or a bot.</p></div></li>
+  </ul>
 </main>
+<footer class="site-foot"><span>© 2026 Cartavia</span><span><a href="/privacy/#en">Privacy Policy</a> · <a href="mailto:support@playcartavia.com">support@playcartavia.com</a></span></footer>
+</div>
 <script>
-// The line and the privacy link in the reader's language, when the game speaks it. Nothing is sent anywhere.
+// The phone's own store first (the other one stays, quieter); on a computer both. On the root page only, a reader whose
+// language the game speaks goes to that language's page. Nothing is sent anywhere.
 (function () {
-  var T = {"tr": ["Kartları 5×5 tahtaya yerleştir; satırlar ve sütunlar poker eli olsun.", "Gizlilik Politikası"], "en": ["Place cards on a 5×5 board where every row and column becomes a poker hand.", "Privacy Policy"], "de": ["Leg Karten auf ein 5×5-Feld – jede Zeile und Spalte wird zur Pokerhand.", "Datenschutzerklärung"], "es": ["Coloca cartas en un tablero de 5×5: cada fila y columna es una mano de póker.", "Política de privacidad"], "fr": ["Pose des cartes sur une grille 5×5 : lignes et colonnes font des mains de poker.", "Politique de confidentialité"], "id": ["Letakkan kartu di papan 5×5; setiap baris dan kolom jadi kombinasi poker.", "Kebijakan Privasi"], "it": ["Piazza le carte su una griglia 5×5: ogni riga e colonna è una mano di poker.", "Informativa sulla privacy"], "ja": ["5×5の盤面にカードを置いて、行と列をポーカーの役にしよう。", "プライバシーポリシー"], "ko": ["5×5 보드에 카드를 놓아 가로줄과 세로줄을 포커 족보로 만드세요.", "개인정보처리방침"], "nl": ["Leg kaarten op een 5×5-veld: elke rij en kolom wordt een pokerhand.", "Privacybeleid"], "pl": ["Układaj karty na planszy 5×5 – wiersze i kolumny tworzą układy pokerowe.", "Polityka prywatności"], "pt-BR": ["Coloque cartas num tabuleiro 5×5: cada linha e coluna vira uma mão de pôquer.", "Política de privacidade"], "ru": ["Выкладывай карты на поле 5×5: каждая строка и столбец — покерная комбинация.", "Политика конфиденциальности"], "vi": ["Đặt lá bài lên bàn 5×5 để mỗi hàng và cột thành một bộ poker.", "Chính sách quyền riêng tư"], "zh-Hant": ["把紙牌放上 5×5 盤面，讓每一橫列和直行都組成撲克牌型。", "隱私權政策"]};
-  var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+  var ua = navigator.userAgent || "", android = /android/i.test(ua);
+  var ios = /iphone|ipad|ipod/i.test(ua) || (/macintosh/i.test(ua) && navigator.maxTouchPoints > 1);
+  var a = document.getElementById("ios"), g = document.getElementById("android");
+  if (android) { a.className = "btn soft"; a.parentNode.insertBefore(g, a); }
+  if (ios) { g.className = "btn soft"; }
+  if (!true) return;
+  var LANGS = ["tr", "en", "de", "es", "fr", "id", "it", "ja", "ko", "nl", "pl", "pt-BR", "ru", "vi", "zh-Hant"], list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
   for (var i = 0; i < list.length; i++) {
     var tag = String(list[i]).toLowerCase(), want = tag.indexOf("zh") === 0 ? "zh-Hant" : tag.indexOf("pt") === 0 ? "pt-BR" : tag.split("-")[0];
-    if (!T[want]) continue;
-    document.documentElement.lang = want; document.getElementById("line").textContent = T[want][0]; document.getElementById("privacy").textContent = T[want][1];
+    if (LANGS.indexOf(want) < 0) continue;
+    if (want !== "en" && location.protocol.indexOf("http") === 0) location.replace("/" + want + "/");
     break;
   }
 })();

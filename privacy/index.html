@@ -5,23 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cartavia Gizlilik Politikası · Privacy Policy</title>
 <meta name="description" content="Cartavia gizlilik politikası. Cartavia privacy policy.">
+<meta name="theme-color" content="#652F2E">
+<link rel="icon" href="/icon.png">
+<link rel="apple-touch-icon" href="/icon.png">
+<link rel="preload" href="/fonts/manrope.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  :root { --table: #1A1714; --panel: #24201B; --cream: #EFE6D4; --muted: #B9A987; --gold: #D4B36A; --line: #3A332A; }
-  @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) { --table: #F6F1E6; --panel: #FFFFFF; --cream: #2A241C; --muted: #6E6250; --gold: #8A6A22; --line: #E2D8C4; } }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: var(--table); color: var(--cream); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
-  header { border-bottom: 1px solid var(--line); margin-bottom: 24px; padding-bottom: 16px; }
-  h1 { font-weight: 500; letter-spacing: .02em; margin: 0 0 4px; font-size: 1.8rem; }
-  h2 { color: var(--gold); font-weight: 500; font-size: 1.15rem; margin: 28px 0 6px; }
-  p, li { color: var(--cream); }
-  .muted { color: var(--muted); font-size: .92rem; }
-  nav a, a { color: var(--gold); }
-  section.lang { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 8px 20px 20px; margin-top: 24px; }
-  ul { padding-left: 1.2em; }
+@font-face{font-family:"Manrope";src:url(/fonts/manrope.woff2) format("woff2");font-weight:500 800;font-display:swap}
+@font-face{font-family:"Unbounded";src:url(/fonts/unbounded.woff2) format("woff2");font-weight:500 700;font-display:swap}
+@font-face{font-family:"Marcellus";src:url(/fonts/marcellus.woff2) format("woff2");font-display:swap}
+
+:root{color-scheme:dark;--text:#F3EEE4;--muted:#D4B5B5;--accent:#EBC989;--edge:#370F15}
+*{box-sizing:border-box}
+html{background:#4B1D29}
+body{margin:0;color:var(--text);font:500 16px/1.65 "Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:linear-gradient(#652F2E,#4B1D29 40%) fixed;-webkit-text-size-adjust:100%}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:800px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) max(18px,env(safe-area-inset-right)) 0 max(18px,env(safe-area-inset-left))}
+.bar a{display:flex;align-items:center;gap:9px;text-decoration:none}
+.bar svg{width:28px;height:28px}
+.bar span{font-family:"Marcellus",serif;font-size:17px;letter-spacing:.24em;background:linear-gradient(#FDE6AD,#EBC989 55%,#9D7E4D);-webkit-background-clip:text;background-clip:text;color:transparent}
+main{max-width:800px;margin:0 auto;padding:18px max(18px,env(safe-area-inset-right)) 64px max(18px,env(safe-area-inset-left))}
+header{margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid rgba(243,238,228,.1)}
+h1{font-family:"Unbounded","Manrope",sans-serif;font-weight:700;font-size:clamp(26px,5vw,34px);letter-spacing:-.01em;margin:10px 0 4px}
+h2{font-family:"Unbounded","Manrope",sans-serif;color:var(--accent);font-weight:600;font-size:1.02rem;margin:26px 0 6px}
+p,li{color:var(--text)}
+.muted{color:var(--muted);font-size:.92rem}
+a{color:var(--accent)}
+nav{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;font-size:0;color:transparent}
+nav a{font-size:13px;font-weight:700;text-decoration:none;color:var(--muted);padding:4px 10px;border-radius:999px;background:rgba(104,59,63,.7)}
+nav a:hover{color:var(--text)}
+section.lang{background:rgba(72,28,34,.55);box-shadow:inset 0 0 0 1px var(--edge),inset 0 1px 0 rgba(255,255,255,.06);border-radius:20px;padding:6px 22px 20px;margin-top:22px;scroll-margin-top:16px}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+ul{padding-left:1.2em}
 </style>
 </head>
 <body>
+<svg class="defs" aria-hidden="true"><defs>
+<linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDE6AD"/><stop offset=".55" stop-color="#EBC989"/><stop offset="1" stop-color="#9D7E4D"/></linearGradient>
+<symbol id="emblem" viewBox="0 0 512 512">
+<circle cx="256" cy="256" r="236" fill="none" stroke="url(#gold)" stroke-width="10"/><circle cx="256" cy="256" r="219" fill="none" stroke="#EBC989" stroke-opacity=".75" stroke-width="2.5"/>
+<polygon points="256,44 256,256 223.5,223.5" fill="#FBE9C0"/><polygon points="256,44 256,256 288.5,223.5" fill="#8A6B3E"/>
+<polygon points="468,256 256,256 288.5,223.5" fill="#FBE9C0"/><polygon points="468,256 256,256 288.5,288.5" fill="#8A6B3E"/>
+<polygon points="256,468 256,256 288.5,288.5" fill="#FBE9C0"/><polygon points="256,468 256,256 223.5,288.5" fill="#8A6B3E"/>
+<polygon points="44,256 256,256 223.5,288.5" fill="#FBE9C0"/><polygon points="44,256 256,256 223.5,223.5" fill="#8A6B3E"/>
+<g fill="#F1EADC"><path transform="translate(165.5 165.5) scale(33)" d="M0,-1 C.3,-.58 .92,-.3 .92,.2 C.92,.72 .26,.8 .07,.42 L.26,1 L-.26,1 L-.07,.42 C-.26,.8 -.92,.72 -.92,.2 C-.92,-.3 -.3,-.58 0,-1Z"/>
+<path transform="translate(346.5 165.5) scale(33)" d="M0,-.32 C0,-.8 -.92,-.8 -.92,-.16 C-.92,.36 -.3,.62 0,1 C.3,.62 .92,.36 .92,-.16 C.92,-.8 0,-.8 0,-.32Z"/>
+<path transform="translate(346.5 346.5) scale(33)" d="M0,-1 L.74,0 L0,1 L-.74,0Z"/>
+<path transform="translate(165.5 346.5) scale(33)" d="M0,-.95 A.42,.42 0 1 1 0,-.11 A.42,.42 0 1 1 0,-.95Z M-.5,-.27 A.42,.42 0 1 1 -.5,.57 A.42,.42 0 1 1 -.5,-.27Z M.5,-.27 A.42,.42 0 1 1 .5,.57 A.42,.42 0 1 1 .5,-.27Z M-.24,1 L.24,1 L.07,.1 L-.07,.1Z"/></g>
+<circle cx="256" cy="256" r="21" fill="#4B1D29" stroke="url(#gold)" stroke-width="4"/><circle cx="256" cy="256" r="7" fill="#FBE9C0"/></symbol>
+<symbol id="i-spade" viewBox="-1 -1 2 2"><path fill="currentColor" d="M0,-1 C.3,-.58 .92,-.3 .92,.2 C.92,.72 .26,.8 .07,.42 L.26,1 L-.26,1 L-.07,.42 C-.26,.8 -.92,.72 -.92,.2 C-.92,-.3 -.3,-.58 0,-1Z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 8.5h9.5A1.5 1.5 0 0 1 20 10v9.5a1.5 1.5 0 0 1-1.5 1.5H9a1.5 1.5 0 0 1-1.5-1.5V10A1.5 1.5 0 0 1 9 8.5ZM4 15.5V5a1.5 1.5 0 0 1 1.5-1.5H15"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M5 3.6v16.8c0 .6.7 1 1.2.7l14.3-8.4c.5-.3.5-1.1 0-1.4L6.2 2.9C5.7 2.6 5 3 5 3.6Z"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M10.5 18.5h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24"><g fill="currentColor"><rect x="3" y="3" width="5" height="5" rx="1.2"/><rect x="9.5" y="3" width="5" height="5" rx="1.2"/><rect x="16" y="3" width="5" height="5" rx="1.2"/><rect x="3" y="9.5" width="5" height="5" rx="1.2" opacity=".4"/><rect x="9.5" y="9.5" width="5" height="5" rx="1.2" opacity=".4"/><rect x="16" y="9.5" width="5" height="5" rx="1.2" opacity=".4"/><rect x="3" y="16" width="5" height="5" rx="1.2" opacity=".4"/><rect x="9.5" y="16" width="5" height="5" rx="1.2" opacity=".4"/><rect x="16" y="16" width="5" height="5" rx="1.2" opacity=".4"/></g></symbol>
+<symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke-linecap="round"/></g><circle cx="12" cy="15" r="2" fill="currentColor"/></symbol>
+<symbol id="i-duel" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="2.5" y="5" width="9" height="13" rx="2" transform="rotate(-10 7 11.5)"/><rect x="12.5" y="5" width="9" height="13" rx="2" transform="rotate(10 17 11.5)"/></g></symbol>
+<symbol id="i-heart" viewBox="-1 -1 2 2"><path fill="currentColor" d="M0,-.32 C0,-.8 -.92,-.8 -.92,-.16 C-.92,.36 -.3,.62 0,1 C.3,.62 .92,.36 .92,-.16 C.92,-.8 0,-.8 0,-.32Z"/></symbol>
+<symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="#12301F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5 10 17.5 19 7"/></symbol>
+</defs></svg>
+<div class="bar"><a href="/" aria-label="Cartavia"><svg aria-hidden="true" viewBox="0 0 512 512"><use href="#emblem"/></svg><span>CARTAVIA</span></a></div>
 <main>
 <header>
   <h1>Cartavia</h1>
