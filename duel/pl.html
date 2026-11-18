@@ -24,6 +24,7 @@
 @font-face{font-family:"Manrope";src:url(/fonts/manrope.woff2) format("woff2");font-weight:500 800;font-display:swap}
 @font-face{font-family:"Unbounded";src:url(/fonts/unbounded.woff2) format("woff2");font-weight:500 700;font-display:swap}
 @font-face{font-family:"Marcellus";src:url(/fonts/marcellus.woff2) format("woff2");font-display:swap}
+@font-face{font-family:"Outfit";src:url(/fonts/outfit.woff2) format("woff2");font-weight:800;font-display:swap}
 :root{color-scheme:dark;--top:#652F2E;--bottom:#4B1D29;--text:#F3EEE4;--muted:#D4B5B5;--accent:#EBC989;--accent-hi:#FDE6AD;--on-accent:#312409;
 --btn-edge:#9D7E4D;--edge:#370F15;--positive:#97E1BC;--paper:#F8F2E6;--card-edge:#BAAFA0;--ink:#1A1714;
 --me:#F5A524;--me-ink:#FFBE55;--rv:#4C7DFF;--rv-deep:#1A3591;--rv-ink:#8AA9FF;
@@ -58,7 +59,7 @@ p{margin:0}
 .seat.open span{color:var(--me-ink)}
 .seats em{font-family:var(--disp);font-style:normal;font-weight:600;font-size:12px;color:var(--muted);letter-spacing:.08em}
 .cards{display:flex;gap:7px;justify-content:center}
-.cards span{width:40px;height:54px;border-radius:7px;background:var(--paper);border:1px solid var(--card-edge);color:var(--ink);font-family:var(--disp);font-weight:700;font-size:22px;display:grid;place-items:center;box-shadow:0 5px 10px -5px rgba(20,4,8,.8)}
+.cards span{width:42px;height:46px;border-radius:7px;background:linear-gradient(#FFFDF8,var(--paper) 55%);color:var(--ink);font:800 25px/1 "Outfit",var(--ui);display:grid;place-items:center;box-shadow:0 3px 0 var(--card-edge),0 9px 12px -6px rgba(20,4,8,.75)}
 .btn{width:100%;min-height:52px;padding:8px 16px;border-radius:15px;border:0;font:800 16px/1.2 var(--ui);display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;cursor:pointer}
 .btn.go{color:var(--on-accent);background:linear-gradient(#FDE6AD,#EBC989 60%,#DDB572);box-shadow:inset 0 0 0 1px var(--btn-edge),inset 0 2px 0 rgba(255,255,255,.55),0 8px 16px -8px rgba(20,4,8,.9)}
 .btn.soft{color:var(--text);background:rgba(104,59,63,.8);box-shadow:inset 0 0 0 1px var(--edge),inset 0 1px 0 rgba(255,255,255,.12)}
@@ -100,7 +101,7 @@ body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:ce
 <path transform="translate(346.5 165.5) scale(33)" d="M0,-.32 C0,-.8 -.92,-.8 -.92,-.16 C-.92,.36 -.3,.62 0,1 C.3,.62 .92,.36 .92,-.16 C.92,-.8 0,-.8 0,-.32Z"/>
 <path transform="translate(346.5 346.5) scale(33)" d="M0,-1 L.74,0 L0,1 L-.74,0Z"/>
 <path transform="translate(165.5 346.5) scale(33)" d="M0,-.95 A.42,.42 0 1 1 0,-.11 A.42,.42 0 1 1 0,-.95Z M-.5,-.27 A.42,.42 0 1 1 -.5,.57 A.42,.42 0 1 1 -.5,-.27Z M.5,-.27 A.42,.42 0 1 1 .5,.57 A.42,.42 0 1 1 .5,-.27Z M-.24,1 L.24,1 L.07,.1 L-.07,.1Z"/></g>
-<circle cx="256" cy="256" r="21" fill="#4B1D29" stroke="url(#gold)" stroke-width="4"/><circle cx="256" cy="256" r="7" fill="#FBE9C0"/></symbol>
+<circle cx="256" cy="256" r="21" style="fill:var(--bottom,#4B1D29)" stroke="url(#gold)" stroke-width="4"/><circle cx="256" cy="256" r="7" fill="#FBE9C0"/></symbol>
 <symbol id="i-spade" viewBox="-1 -1 2 2"><path fill="currentColor" d="M0,-1 C.3,-.58 .92,-.3 .92,.2 C.92,.72 .26,.8 .07,.42 L.26,1 L-.26,1 L-.07,.42 C-.26,.8 -.92,.72 -.92,.2 C-.92,-.3 -.3,-.58 0,-1Z"/></symbol>
 <symbol id="i-plus" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M12 5v14M5 12h14"/></symbol>
 <symbol id="i-copy" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M9 8.5h9.5A1.5 1.5 0 0 1 20 10v9.5a1.5 1.5 0 0 1-1.5 1.5H9a1.5 1.5 0 0 1-1.5-1.5V10A1.5 1.5 0 0 1 9 8.5ZM4 15.5V5a1.5 1.5 0 0 1 1.5-1.5H15"/></symbol>
@@ -135,7 +136,7 @@ body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:ce
     <button type="button" class="btn text code-only" id="copy"><svg aria-hidden="true"><use href="#i-copy"/></svg>Kopiuj kod</button>
     <p class="hint" id="hint" hidden>W grze: <b>Duello → Ze znajomymi → Dołącz kodem → Wklej ze schowka</b></p>
     <p class="foot code-only">Pokój jest otwarty 10 minut.</p>
-    <p class="foot nocode-only">Układaj karty na planszy 5×5 – wiersze i kolumny tworzą układy pokerowe.</p>
+    <p class="foot nocode-only">Karty na planszy 5×5: wiersze i kolumny tworzą układy pokerowe. Duele 1 na 1.</p>
   </div>
 </main>
 <div class="note" id="note" role="status" hidden><i><svg aria-hidden="true"><use href="#i-check"/></svg></i>Skopiowano</div>
