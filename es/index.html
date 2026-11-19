@@ -42,7 +42,7 @@
 @font-face{font-family:"Outfit";src:url(/fonts/outfit.woff2) format("woff2");font-weight:800;font-display:swap}
 :root{color-scheme:dark;--top:#652F2E;--bottom:#4B1D29;--text:#F3EEE4;--muted:#D4B5B5;--accent:#EBC989;--accent-hi:#FDE6AD;--on-accent:#312409;
 --btn-edge:#9D7E4D;--edge:#370F15;--positive:#97E1BC;--paper:#F8F2E6;--card-edge:#BAAFA0;--ink:#1A1714;
---me:#F5A524;--me-ink:#FFBE55;--rv:#4C7DFF;--rv-deep:#1A3591;--rv-ink:#8AA9FF;
+--me:#F5A524;--me-ink:#FFBE55;--rv:#4C7DFF;--rv-deep:#1A3591;--rv-ink:#8AA9FF;--a1:#51D39C;--a2:#EDB333;--a3:#C56C03;
 --disp:"Unbounded","Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ui:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--rank:"Marcellus","Iowan Old Style","Times New Roman",serif}
 *{box-sizing:border-box}
 html{height:100%;background:var(--bottom)}
@@ -50,8 +50,12 @@ body{margin:0;min-height:100%;display:flow-root;color:var(--text);font:500 16px/
 body::before{content:"";position:fixed;inset:0;pointer-events:none;background:
 radial-gradient(70% 38% at 12% 4%,rgba(237,179,51,.20),transparent 70%),radial-gradient(60% 34% at 96% 22%,rgba(197,108,3,.22),transparent 72%),
 radial-gradient(70% 30% at 40% 104%,rgba(81,211,156,.09),transparent 70%),radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(30,6,12,.5))}
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+.sky canvas{position:absolute;inset:0;width:100%;height:100%}
+.sky::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,var(--vignette,rgba(30,6,12,.5)))}
+html.sky body::before{display:none}
 .defs{position:absolute;width:0;height:0;overflow:hidden}
-.pg{position:relative;max-width:440px;min-height:100vh;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
+.pg{position:relative;z-index:1;max-width:440px;min-height:100vh;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
 padding:max(26px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
 .lead,.act{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
 .lead{flex:1;justify-content:center}
@@ -103,7 +107,7 @@ body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:ce
 @media (prefers-reduced-motion:reduce){.note{transition:none}}
 :root{--top:#652F2E;--bottom:#4B1D29;--text:#F3EEE4;--muted:#D8BABA;--accent:#EBC989;--accent-hi:#FDE6AD;--on-accent:#312409;--btn-edge:#9D7E4D;--edge:#370F15;--sunken:#481C22;--positive:#97E1BC;--a1:#51D39C;--a2:#EDB333;--a3:#C56C03;--panel:rgba(55,15,21,0.45);--soft:rgba(110,64,69,0.8);--menu:rgba(74,29,39,0.97);--line:rgba(55,15,21,0.75);--drop:rgba(14,3,8,.6);--vignette:rgba(30,6,12,.5);color-scheme:dark}:root[data-pal="midnight"]{--top:#254260;--bottom:#202C4A;--text:#F3EEE4;--muted:#AEBFD8;--accent:#F4B768;--accent-hi:#FFD79B;--on-accent:#372101;--btn-edge:#A26E30;--edge:#0D1D35;--sunken:#192B45;--positive:#85E3C6;--a1:#33D4AD;--a2:#F8AC3D;--a3:#9C67D9;--panel:rgba(13,29,53,0.45);--soft:rgba(55,73,100,0.8);--menu:rgba(31,44,73,0.97);--line:rgba(13,29,53,0.75);--drop:rgba(14,3,8,.6);--vignette:rgba(30,6,12,.5);color-scheme:dark}:root[data-pal="emerald"]{--top:#1A573F;--bottom:#174025;--text:#F3EEE4;--muted:#B4D1BF;--accent:#EDC569;--accent-hi:#FDE394;--on-accent:#322401;--btn-edge:#9E7A2F;--edge:#042F1B;--sunken:#113E27;--positive:#8EEBE2;--a1:#11D2C7;--a2:#E8B631;--a3:#0B98A2;--panel:rgba(4,47,27,0.45);--soft:rgba(51,91,69,0.8);--menu:rgba(22,64,37,0.97);--line:rgba(4,47,27,0.75);--drop:rgba(14,3,8,.6);--vignette:rgba(30,6,12,.5);color-scheme:dark}:root[data-pal="lavender"]{--top:#EBDFF3;--bottom:#D1CDE6;--text:#292335;--muted:#554D62;--accent:#6D3369;--accent-hi:#8D5082;--on-accent:#FDF8FD;--btn-edge:#481645;--edge:#B4AAC4;--sunken:#CCC2DE;--positive:#156248;--a1:#82D9B4;--a2:#F4B0ED;--a3:#E79DC4;--panel:rgba(239,234,248,0.7);--soft:rgba(239,234,248,0.95);--menu:rgba(239,234,248,0.98);--line:rgba(180,170,196,0.9);--drop:rgba(60,40,90,.28);--vignette:rgba(90,70,120,.10);color-scheme:light}
 
-.home{min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
+.home{position:relative;z-index:1;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column}
 html{background:var(--bottom)}
 body::before{background:radial-gradient(70% 38% at 12% 4%,color-mix(in srgb,var(--a2) 20%,transparent),transparent 70%),radial-gradient(60% 34% at 96% 22%,color-mix(in srgb,var(--a3) 22%,transparent),transparent 72%),
 radial-gradient(70% 30% at 40% 104%,color-mix(in srgb,var(--a1) 9%,transparent),transparent 70%),radial-gradient(120% 90% at 50% 40%,transparent 55%,var(--vignette))}
@@ -260,6 +264,69 @@ body{transition:background-color .3s}
 <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" stroke-linecap="round"/></g></symbol>
 <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="m4 7 8 6 8-6" stroke-linecap="round"/></g></symbol>
 <symbol id="phone" viewBox="0 0 1452 2976"><defs><linearGradient id="ph-rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8C8C93"/><stop offset=".18" stop-color="#3A3A40"/><stop offset=".5" stop-color="#2A2A2F"/><stop offset=".82" stop-color="#3A3A40"/><stop offset="1" stop-color="#77777E"/></linearGradient><linearGradient id="ph-edge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".5"/><stop offset=".08" stop-color="#FFFFFF" stop-opacity=".08"/><stop offset=".92" stop-color="#FFFFFF" stop-opacity=".08"/><stop offset="1" stop-color="#FFFFFF" stop-opacity=".42"/></linearGradient><linearGradient id="ph-key" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#1C1C20"/><stop offset=".5" stop-color="#55555C"/><stop offset="1" stop-color="#232327"/></linearGradient><linearGradient id="ph-sheen" x1="0" y1="0" x2=".6" y2=".45"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".07"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient></defs><rect x="2" y="560" width="16" height="140" rx="6" fill="url(#ph-key)"/><rect x="2" y="790" width="16" height="220" rx="6" fill="url(#ph-key)"/><rect x="2" y="1060" width="16" height="220" rx="6" fill="url(#ph-key)"/><rect x="1434" y="880" width="16" height="360" rx="6" fill="url(#ph-key)"/><path d="M252 0H1200A240 240 0 0 1 1440 240V2736A240 240 0 0 1 1200 2976H252A240 240 0 0 1 12 2736V240A240 240 0 0 1 252 0Z M252 20H1200A220 220 0 0 1 1420 240V2736A220 220 0 0 1 1200 2956H252A220 220 0 0 1 32 2736V240A220 220 0 0 1 252 20Z" fill="url(#ph-rim)" fill-rule="evenodd"/><path d="M252 0H1200A240 240 0 0 1 1440 240V2736A240 240 0 0 1 1200 2976H252A240 240 0 0 1 12 2736V240A240 240 0 0 1 252 0Z" fill="none" stroke="url(#ph-edge)" stroke-width="3"/><path d="M252 20H1200A220 220 0 0 1 1420 240V2736A220 220 0 0 1 1200 2956H252A220 220 0 0 1 32 2736V240A220 220 0 0 1 252 20Z M252 54H1200A186 186 0 0 1 1386 240V2736A186 186 0 0 1 1200 2922H252A186 186 0 0 1 66 2736V240A186 186 0 0 1 252 54Z" fill="#060607" fill-rule="evenodd"/><path d="M252 20H1200A220 220 0 0 1 1420 240V2736A220 220 0 0 1 1200 2956H252A220 220 0 0 1 32 2736V240A220 220 0 0 1 252 20Z" fill="none" stroke="#000" stroke-width="4"/><path d="M252 54H1200A186 186 0 0 1 1386 240V2736A186 186 0 0 1 1200 2922H252A186 186 0 0 1 66 2736V240A186 186 0 0 1 252 54Z" fill="none" stroke="#1C1C21" stroke-width="3"/><path d="M252 54H1200A186 186 0 0 1 1386 240V2736A186 186 0 0 1 1200 2922H252A186 186 0 0 1 66 2736V240A186 186 0 0 1 252 54Z" fill="url(#ph-sheen)"/><rect x="536" y="87" width="380" height="112" rx="56" fill="#000"/><circle cx="854" cy="143" r="19" fill="#0B0E16"/><circle cx="854" cy="143" r="9" fill="#18203A"/><circle cx="850" cy="138" r="3.5" fill="#4A5C85"/><g fill="currentColor"><path d="M280.22833333333335 123.82333333333334Q283.89866666666666 123.82333333333334 286.8301666666666 125.55666666666667Q289.76166666666666 127.28999999999999 291.47333333333336 130.3515Q293.185 133.413 293.185 137.38666666666666V148.78333333333333Q293.185 153.03866666666667 291.4755 156.18683333333334Q289.766 159.335 286.6936666666667 161.0575Q283.6213333333333 162.78 279.535 162.78Q276.688 162.78 274.1638333333333 161.8115Q271.63966666666664 160.843 269.6376666666667 158.79333333333332L274.153 154.408Q275.154 155.56933333333333 276.5775 156.24099999999999Q278.001 156.91266666666667 279.535 156.91266666666667Q281.7146666666667 156.91266666666667 283.34833333333336 155.8835Q284.982 154.85433333333333 285.88983333333334 153.19683333333333Q286.79766666666666 151.53933333333333 286.79766666666666 149.65V143.436L287.933 144.684Q286.3383333333333 146.556 284.07416666666666 147.60466666666667Q281.81 148.65333333333334 279.3183333333333 148.65333333333334Q275.79966666666667 148.65333333333334 273.08483333333334 147.05Q270.37 145.44666666666666 268.8208333333333 142.67766666666665Q267.27166666666665 139.90866666666668 267.27166666666665 136.39Q267.27166666666665 132.87133333333333 269.0483333333333 130.0265Q270.825 127.18166666666667 273.76733333333334 125.5025Q276.7096666666667 123.82333333333334 280.22833333333335 123.82333333333334ZM280.22833333333335 129.82066666666668Q278.40833333333336 129.82066666666668 276.90250000000003 130.70033333333333Q275.39666666666665 131.58 274.5061666666667 133.075Q273.61566666666664 134.57 273.61566666666664 136.39Q273.61566666666664 138.21 274.4953333333333 139.71583333333334Q275.375 141.22166666666666 276.87 142.11216666666667Q278.365 143.00266666666667 280.185 143.00266666666667Q282.005 143.00266666666667 283.5108333333333 142.11216666666667Q285.01666666666665 141.22166666666666 285.9071666666666 139.71583333333334Q286.79766666666666 138.21 286.79766666666666 136.39Q286.79766666666666 134.61333333333334 285.918 133.11833333333334Q285.03833333333336 131.62333333333333 283.54333333333335 130.722Q282.04833333333335 129.82066666666668 280.22833333333335 129.82066666666668Z M302.02500000000003 158.62V152.20666666666668H308.4383333333334V158.62ZM302.0683333333333 143.71333333333334V137.3H308.4816666666667V143.71333333333334Z M332.783 162.0V155.82066666666665H316.19500000000005V149.95333333333332L328.18100000000004 124.56H335.3396666666667L323.3536666666667 149.95333333333332H332.783V140.20333333333332H339.127V149.95333333333332H342.64566666666667V155.82066666666665H339.127V162.0Z M354.87433333333337 162.0V131.398L347.8456666666667 135.69666666666666V128.772L354.87433333333337 124.56H361.2616666666667V162.0Z"/><rect x="1044" y="149" width="10" height="12" rx="2.5"/><rect x="1059" y="142" width="10" height="19" rx="2.5"/><rect x="1074" y="135" width="10" height="26" rx="2.5"/><rect x="1089" y="127" width="10" height="34" rx="2.5"/><path d="M1160 160L1150.81 150.808A13 13 0 0 1 1169.19 150.808Z"/><path d="M1139.49 139.494A29 29 0 0 1 1180.51 139.494L1173.43 146.565A19 19 0 0 0 1146.57 146.565Z"/><path d="M1127.47 127.473A46 46 0 0 1 1192.53 127.473L1184.75 135.251A35 35 0 0 0 1135.25 135.251Z"/><rect x="1204" y="124" width="82" height="38" rx="12" fill="none" stroke="currentColor" stroke-opacity=".42" stroke-width="3.5"/><rect x="1209.5" y="129.5" width="56.8" height="27" rx="7.5"/><path d="M1289 136h3a4 4 0 0 1 4 4v6a4 4 0 0 1 -4 4h-3z" fill-opacity=".42"/><rect x="516" y="2881" width="420" height="15" rx="7.5" fill-opacity=".92"/></g></symbol></defs></svg>
+<div class="sky" aria-hidden="true"><canvas></canvas><canvas></canvas></div>
+<script>
+(function () {
+  var sky = document.currentScript.previousElementSibling, root = document.documentElement, cv = sky.getElementsByTagName("canvas");
+  var cc = cv[0].getContext && cv[0].getContext("2d"), mc = cv[1].getContext && cv[1].getContext("2d");
+  if (!cc || !mc) return;
+  root.classList.add("sky");
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  // CartaviaAurora.Configure: colour, anchor x and y (from the bottom left), orbit x and y, size and squash (of the
+  // width), phase, speed, strength (of the theme's: .36 on a dark table, .16 on a light one).
+  var CLOUDS = [["--a1", .18, .74, .14, .08, 1.7, .78, 0, .055, 1], ["--a3", .84, .82, .1, .1, 1.5, .85, 2.1, .042, .85], ["--a2", .62, .14, .16, .07, 1.8, .66, 4.2, .036, .72]];
+  var FALL = [[0, 1], [.25, .82], [.5, .45], [.75, .1], [.9, .02], [1, 0]];  // the Cloud sprite: exp(-3.2 r^2), no edge
+  var seed = 7; function rnd() { seed = seed * 16807 % 2147483647; return (seed - 1) / 2147483646; }
+  function between(a, b) { return a + rnd() * (b - a); }
+  var motes = [];  // CartaviaMotesGraphic.Configure: 34 of them, none on a grid
+  for (var i = 0; i < 34; i++) motes.push({ u: between(.03, .97), v: between(0, 1), size: between(1.6, 5.2) * (rnd() < 1 / 9 ? 1.6 : 1), rise: between(3.5, 9),
+    sway: between(4, 12), swayP: between(5, 11), tw: between(.35, 1), twP: between(2.2, 5), ph: between(0, 6.28), warm: rnd() < .25 });
+  var colours, light, dots, W = 1, H = 1;
+  function rgb(name) { var m = /#([0-9a-f]{6})/i.exec(getComputedStyle(root).getPropertyValue(name)), n = m ? parseInt(m[1], 16) : 0; return [n >> 16, n >> 8 & 255, n & 255]; }
+  function dot(c, a) {
+    var s = document.createElement("canvas"); s.width = s.height = 64;
+    var x = s.getContext("2d"), g = x.createRadialGradient(32, 32, 0, 32, 32, 32);
+    g.addColorStop(0, "rgba(" + c + "," + a + ")"); g.addColorStop(1, "rgba(" + c + ",0)"); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return s;
+  }
+  function theme() {
+    var t = rgb("--text"); light = (t[0] * 299 + t[1] * 587 + t[2] * 114) / 1000 < 128;
+    colours = CLOUDS.map(function (c) { return rgb(c[0]).join(","); });
+    dots = [dot(t.join(","), light ? .32 : .5), dot(rgb("--accent-hi").join(","), light ? .28 : .42)];
+  }
+  function size() {
+    W = innerWidth || 1; H = innerHeight || 1; var k = Math.min(window.devicePixelRatio || 1, 2);
+    cv[0].width = Math.max(2, Math.round(W / 8)); cv[0].height = Math.max(2, Math.round(H / 8));
+    cv[1].width = Math.round(W * k); cv[1].height = Math.round(H * k); mc.setTransform(k, 0, 0, k, 0, 0);
+  }
+  function draw(t) {
+    // A phone's width in the game; on a wide screen the shorter side, so the clouds keep their size against it.
+    var base = Math.min(W, H), s = cv[0].width / W, strength = light ? .16 : .36;
+    cc.clearRect(0, 0, cv[0].width, cv[0].height);
+    for (var i = 0; i < CLOUDS.length; i++) {
+      var c = CLOUDS[i], x = (c[1] * W + Math.cos(t * c[8] + c[7]) * c[3] * W) * s, y = ((1 - c[2]) * H - Math.sin(t * c[8] * 1.31 + c[7]) * c[4] * H) * s;
+      var r = base * c[5] / 2 * s, a = strength * c[9], g = cc.createRadialGradient(0, 0, 0, 0, 0, r);
+      for (var f = 0; f < FALL.length; f++) g.addColorStop(FALL[f][0], "rgba(" + colours[i] + "," + (a * FALL[f][1]).toFixed(4) + ")");
+      cc.save(); cc.translate(x, y); cc.scale(1, c[6]); cc.fillStyle = g; cc.fillRect(-r, -r, 2 * r, 2 * r); cc.restore();
+    }
+    var u = Math.min(base / 390, 1.5);
+    mc.clearRect(0, 0, W, H);
+    for (var j = 0; j < motes.length; j++) {
+      var m = motes[j], up = (m.v * H + t * m.rise * u) % (H + 24 * u), my = H - (up - 12 * u);
+      var mx = m.u * W + Math.sin(t / m.swayP * 6.2832 + m.ph) * m.sway * u, rad = m.size * u;
+      mc.globalAlpha = Math.max(0, m.tw * (.55 + .45 * Math.sin(t / m.twP * 6.2832 + m.ph * 1.7)));
+      mc.drawImage(dots[m.warm ? 1 : 0], mx - rad, my - rad, 2 * rad, 2 * rad);
+    }
+    mc.globalAlpha = 1;
+  }
+  var start = performance.now(), last = -1;
+  function now() { return still ? 0 : (performance.now() - start) / 1000; }
+  function frame(ms) { if (ms - last >= 33) { last = ms; draw((ms - start) / 1000); } requestAnimationFrame(frame); }
+  theme(); size(); draw(0);
+  addEventListener("resize", function () { size(); draw(now()); });
+  if (window.MutationObserver) new MutationObserver(function () { theme(); draw(now()); }).observe(root, { attributes: true, attributeFilter: ["data-pal"] });
+  if (!still) requestAnimationFrame(frame);
+})();
+</script>
 <div class="home">
 <header class="nav">
   <a class="brand" href="/es/" aria-label="Cartavia"><svg aria-hidden="true"><use href="#emblem"/></svg><span class="wordmark">CARTAVIA</span></a>

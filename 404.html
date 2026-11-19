@@ -27,7 +27,7 @@
 @font-face{font-family:"Outfit";src:url(/fonts/outfit.woff2) format("woff2");font-weight:800;font-display:swap}
 :root{color-scheme:dark;--top:#652F2E;--bottom:#4B1D29;--text:#F3EEE4;--muted:#D4B5B5;--accent:#EBC989;--accent-hi:#FDE6AD;--on-accent:#312409;
 --btn-edge:#9D7E4D;--edge:#370F15;--positive:#97E1BC;--paper:#F8F2E6;--card-edge:#BAAFA0;--ink:#1A1714;
---me:#F5A524;--me-ink:#FFBE55;--rv:#4C7DFF;--rv-deep:#1A3591;--rv-ink:#8AA9FF;
+--me:#F5A524;--me-ink:#FFBE55;--rv:#4C7DFF;--rv-deep:#1A3591;--rv-ink:#8AA9FF;--a1:#51D39C;--a2:#EDB333;--a3:#C56C03;
 --disp:"Unbounded","Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ui:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--rank:"Marcellus","Iowan Old Style","Times New Roman",serif}
 *{box-sizing:border-box}
 html{height:100%;background:var(--bottom)}
@@ -35,8 +35,12 @@ body{margin:0;min-height:100%;display:flow-root;color:var(--text);font:500 16px/
 body::before{content:"";position:fixed;inset:0;pointer-events:none;background:
 radial-gradient(70% 38% at 12% 4%,rgba(237,179,51,.20),transparent 70%),radial-gradient(60% 34% at 96% 22%,rgba(197,108,3,.22),transparent 72%),
 radial-gradient(70% 30% at 40% 104%,rgba(81,211,156,.09),transparent 70%),radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(30,6,12,.5))}
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+.sky canvas{position:absolute;inset:0;width:100%;height:100%}
+.sky::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,var(--vignette,rgba(30,6,12,.5)))}
+html.sky body::before{display:none}
 .defs{position:absolute;width:0;height:0;overflow:hidden}
-.pg{position:relative;max-width:440px;min-height:100vh;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
+.pg{position:relative;z-index:1;max-width:440px;min-height:100vh;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
 padding:max(26px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
 .lead,.act{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
 .lead{flex:1;justify-content:center}

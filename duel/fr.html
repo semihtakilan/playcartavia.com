@@ -27,7 +27,7 @@
 @font-face{font-family:"Outfit";src:url(/fonts/outfit.woff2) format("woff2");font-weight:800;font-display:swap}
 :root{color-scheme:dark;--top:#652F2E;--bottom:#4B1D29;--text:#F3EEE4;--muted:#D4B5B5;--accent:#EBC989;--accent-hi:#FDE6AD;--on-accent:#312409;
 --btn-edge:#9D7E4D;--edge:#370F15;--positive:#97E1BC;--paper:#F8F2E6;--card-edge:#BAAFA0;--ink:#1A1714;
---me:#F5A524;--me-ink:#FFBE55;--rv:#4C7DFF;--rv-deep:#1A3591;--rv-ink:#8AA9FF;
+--me:#F5A524;--me-ink:#FFBE55;--rv:#4C7DFF;--rv-deep:#1A3591;--rv-ink:#8AA9FF;--a1:#51D39C;--a2:#EDB333;--a3:#C56C03;
 --disp:"Unbounded","Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--ui:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--rank:"Marcellus","Iowan Old Style","Times New Roman",serif}
 *{box-sizing:border-box}
 html{height:100%;background:var(--bottom)}
@@ -35,8 +35,12 @@ body{margin:0;min-height:100%;display:flow-root;color:var(--text);font:500 16px/
 body::before{content:"";position:fixed;inset:0;pointer-events:none;background:
 radial-gradient(70% 38% at 12% 4%,rgba(237,179,51,.20),transparent 70%),radial-gradient(60% 34% at 96% 22%,rgba(197,108,3,.22),transparent 72%),
 radial-gradient(70% 30% at 40% 104%,rgba(81,211,156,.09),transparent 70%),radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(30,6,12,.5))}
+.sky{position:fixed;inset:0;z-index:0;pointer-events:none}
+.sky canvas{position:absolute;inset:0;width:100%;height:100%}
+.sky::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,var(--vignette,rgba(30,6,12,.5)))}
+html.sky body::before{display:none}
 .defs{position:absolute;width:0;height:0;overflow:hidden}
-.pg{position:relative;max-width:440px;min-height:100vh;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
+.pg{position:relative;z-index:1;max-width:440px;min-height:100vh;min-height:100dvh;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;
 padding:max(26px,env(safe-area-inset-top)) max(22px,env(safe-area-inset-right)) max(20px,env(safe-area-inset-bottom)) max(22px,env(safe-area-inset-left))}
 .lead,.act{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
 .lead{flex:1;justify-content:center}
@@ -113,6 +117,69 @@ body:not(.mobile) .lead,body:not(.mobile) .act{flex:1 1 300px;justify-content:ce
 <symbol id="i-heart" viewBox="-1 -1 2 2"><path fill="currentColor" d="M0,-.32 C0,-.8 -.92,-.8 -.92,-.16 C-.92,.36 -.3,.62 0,1 C.3,.62 .92,.36 .92,-.16 C.92,-.8 0,-.8 0,-.32Z"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="#12301F" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5 10 17.5 19 7"/></symbol>
 </defs></svg>
+<div class="sky" aria-hidden="true"><canvas></canvas><canvas></canvas></div>
+<script>
+(function () {
+  var sky = document.currentScript.previousElementSibling, root = document.documentElement, cv = sky.getElementsByTagName("canvas");
+  var cc = cv[0].getContext && cv[0].getContext("2d"), mc = cv[1].getContext && cv[1].getContext("2d");
+  if (!cc || !mc) return;
+  root.classList.add("sky");
+  var still = !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  // CartaviaAurora.Configure: colour, anchor x and y (from the bottom left), orbit x and y, size and squash (of the
+  // width), phase, speed, strength (of the theme's: .36 on a dark table, .16 on a light one).
+  var CLOUDS = [["--a1", .18, .74, .14, .08, 1.7, .78, 0, .055, 1], ["--a3", .84, .82, .1, .1, 1.5, .85, 2.1, .042, .85], ["--a2", .62, .14, .16, .07, 1.8, .66, 4.2, .036, .72]];
+  var FALL = [[0, 1], [.25, .82], [.5, .45], [.75, .1], [.9, .02], [1, 0]];  // the Cloud sprite: exp(-3.2 r^2), no edge
+  var seed = 7; function rnd() { seed = seed * 16807 % 2147483647; return (seed - 1) / 2147483646; }
+  function between(a, b) { return a + rnd() * (b - a); }
+  var motes = [];  // CartaviaMotesGraphic.Configure: 34 of them, none on a grid
+  for (var i = 0; i < 34; i++) motes.push({ u: between(.03, .97), v: between(0, 1), size: between(1.6, 5.2) * (rnd() < 1 / 9 ? 1.6 : 1), rise: between(3.5, 9),
+    sway: between(4, 12), swayP: between(5, 11), tw: between(.35, 1), twP: between(2.2, 5), ph: between(0, 6.28), warm: rnd() < .25 });
+  var colours, light, dots, W = 1, H = 1;
+  function rgb(name) { var m = /#([0-9a-f]{6})/i.exec(getComputedStyle(root).getPropertyValue(name)), n = m ? parseInt(m[1], 16) : 0; return [n >> 16, n >> 8 & 255, n & 255]; }
+  function dot(c, a) {
+    var s = document.createElement("canvas"); s.width = s.height = 64;
+    var x = s.getContext("2d"), g = x.createRadialGradient(32, 32, 0, 32, 32, 32);
+    g.addColorStop(0, "rgba(" + c + "," + a + ")"); g.addColorStop(1, "rgba(" + c + ",0)"); x.fillStyle = g; x.fillRect(0, 0, 64, 64); return s;
+  }
+  function theme() {
+    var t = rgb("--text"); light = (t[0] * 299 + t[1] * 587 + t[2] * 114) / 1000 < 128;
+    colours = CLOUDS.map(function (c) { return rgb(c[0]).join(","); });
+    dots = [dot(t.join(","), light ? .32 : .5), dot(rgb("--accent-hi").join(","), light ? .28 : .42)];
+  }
+  function size() {
+    W = innerWidth || 1; H = innerHeight || 1; var k = Math.min(window.devicePixelRatio || 1, 2);
+    cv[0].width = Math.max(2, Math.round(W / 8)); cv[0].height = Math.max(2, Math.round(H / 8));
+    cv[1].width = Math.round(W * k); cv[1].height = Math.round(H * k); mc.setTransform(k, 0, 0, k, 0, 0);
+  }
+  function draw(t) {
+    // A phone's width in the game; on a wide screen the shorter side, so the clouds keep their size against it.
+    var base = Math.min(W, H), s = cv[0].width / W, strength = light ? .16 : .36;
+    cc.clearRect(0, 0, cv[0].width, cv[0].height);
+    for (var i = 0; i < CLOUDS.length; i++) {
+      var c = CLOUDS[i], x = (c[1] * W + Math.cos(t * c[8] + c[7]) * c[3] * W) * s, y = ((1 - c[2]) * H - Math.sin(t * c[8] * 1.31 + c[7]) * c[4] * H) * s;
+      var r = base * c[5] / 2 * s, a = strength * c[9], g = cc.createRadialGradient(0, 0, 0, 0, 0, r);
+      for (var f = 0; f < FALL.length; f++) g.addColorStop(FALL[f][0], "rgba(" + colours[i] + "," + (a * FALL[f][1]).toFixed(4) + ")");
+      cc.save(); cc.translate(x, y); cc.scale(1, c[6]); cc.fillStyle = g; cc.fillRect(-r, -r, 2 * r, 2 * r); cc.restore();
+    }
+    var u = Math.min(base / 390, 1.5);
+    mc.clearRect(0, 0, W, H);
+    for (var j = 0; j < motes.length; j++) {
+      var m = motes[j], up = (m.v * H + t * m.rise * u) % (H + 24 * u), my = H - (up - 12 * u);
+      var mx = m.u * W + Math.sin(t / m.swayP * 6.2832 + m.ph) * m.sway * u, rad = m.size * u;
+      mc.globalAlpha = Math.max(0, m.tw * (.55 + .45 * Math.sin(t / m.twP * 6.2832 + m.ph * 1.7)));
+      mc.drawImage(dots[m.warm ? 1 : 0], mx - rad, my - rad, 2 * rad, 2 * rad);
+    }
+    mc.globalAlpha = 1;
+  }
+  var start = performance.now(), last = -1;
+  function now() { return still ? 0 : (performance.now() - start) / 1000; }
+  function frame(ms) { if (ms - last >= 33) { last = ms; draw((ms - start) / 1000); } requestAnimationFrame(frame); }
+  theme(); size(); draw(0);
+  addEventListener("resize", function () { size(); draw(now()); });
+  if (window.MutationObserver) new MutationObserver(function () { theme(); draw(now()); }).observe(root, { attributes: true, attributeFilter: ["data-pal"] });
+  if (!still) requestAnimationFrame(frame);
+})();
+</script>
 <main class="pg">
   <a class="brand" href="/" aria-label="Cartavia"><svg aria-hidden="true"><use href="#emblem"/></svg><span class="wordmark">CARTAVIA</span></a>
   <div class="lead">
